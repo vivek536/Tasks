@@ -26,6 +26,9 @@ class Student{
     Student s1 = new Student(111,"Karan");  
     Student s2 = new Student(222,"Aryan",25);  
     Student s3 = new Student(333,"Arnold",28,"Gachibowli");
+     Student s4=new Student();
+        s4.id=111;
+        s4.name='Viv";
     s1.display();  
     s2.display();  
 s3.display();
