@@ -1,42 +1,34 @@
-    namespace SingletonDemo
-    {
-        public sealed class Singleton
-        {
-            private static int counter = 0;
-            private static Singleton instance = null;
-            public static Singleton GetInstance
-            {
-                get
-                {
-                    if (instance == null)
-                        instance = new Singleton();
-                    return instance;
-                }
-            }
-            
-            private Singleton()
-            {
-                counter++;
-                Console.WriteLine("Counter Value " + counter.ToString());
-            }
-            public void PrintDetails(string message)
-            {
-                Console.WriteLine(message);
-            }
-        }
-    }
-    namespace SingletonDemo
+﻿using System;
+
+namespace Program1
 {
+    /// <summary>
+    /// This class used for performing mathematical operation
+    /// </summary>
+
     class Program
     {
+        /// <summary>
+        /// Divides two integers <paramref name="a"/> and <paramref name="b"/> and returns the result.
+        /// </summary>
+        /// <returns>
+        /// The divison of two integers.
+        /// </returns>
+        /// <exception cref="System.DivideByZeroException">Thrown when denominator is zero or both numerator amd denominator are zero.</exception>
+        /// See <see cref="Math.Divide(int, int)"/> to add integers.
+        /// <param name="a">Integer.</param>
+        /// <param name="b">Integer.</param>
+        static int Divide(int a,int b)
+        {
+            if ((b==0) || (a==0 && b==0))
+                throw new System.DivideByZeroException();
+            return a/b;
+        }
+
         static void Main(string[] args)
         {
-            Singleton fromTeachaer = Singleton.GetInstance;
-            fromTeachaer.PrintDetails("From Teacher");
-            Singleton fromStudent = Singleton.GetInstance;
-            fromStudent.PrintDetails("From Student");
-
-            Console.ReadLine();
+           
+            Console.WriteLine(Divide(20, 30));
         }
     }
 }
