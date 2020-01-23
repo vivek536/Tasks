@@ -1,45 +1,49 @@
-using System.IO;
-using System;
-
-class Program
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace Caluculator.Library
 {
-    public int add(int a,int b){
-        return a+b;
-    }
-    public int subract(int a,int b){
-        return a-b;
-    }
-    public int mul(int a,int b){
-        return a*b;
-    }
-    public int divide(int a,int b){
-        return a/b;
-    }
-    static void Main()
+    public class Caluculator
     {
-    Console.WriteLine("Enter the number1");
-    int a=Convert.ToInt32(Console.ReadLine()); 
-    Console.WriteLine("Enter the operator(+ or - or * or /)");
-    char op=char.Parse(Console.ReadLine()); 
-     Console.WriteLine("Enter the number2");
-     int b= Convert.ToInt32(Console.ReadLine()); 
-     Program p=new Program();
-     switch(op){
-         case '+':
-         Console.WriteLine(p.add(a,b));
-         break;
-         case '-':
-         Console.WriteLine(p.subract(a,b));
-         break;
-         case '*':
-         Console.WriteLine(p.mul(a,b));
-         break;
-         case '/':
-         Console.WriteLine(p.divide(a,b));
-         break;
-         default:
-         break;
-     }
-    
+        public static int Add(int x, int y)
+        {
+            if ((x == int.MaxValue && y > 0) || (y == int.MaxValue && x > 0))
+            {
+                throw new System.OverflowException();
+            }
+            return x + y;
+        }
+        public static int Subract(int x, int y)
+        {
+            if ((x == int.MaxValue && y < 0) || (y == int.MinValue && x > 0))
+            {
+                throw new System.OverflowException();
+            }
+            return x - y;
+
+        }
+        public static int Multiply(int x, int y)
+        {
+            if ((x == int.MaxValue && y > 1) || (y == int.MaxValue && x > 1))
+            {
+                throw new System.OverflowException();
+            }
+            return x * y;
+        }
+        public static int Divide(int x, int y)
+        {
+            if ((y == 0) || (x == 0 && y == 0))
+            {
+                throw new System.DivideByZeroException();
+            }
+            return x / y;
+        }
+        static void Main(string[] args)
+        {
+            Caluculator classInstance = new Caluculator();
+            
+        }
     }
 }
