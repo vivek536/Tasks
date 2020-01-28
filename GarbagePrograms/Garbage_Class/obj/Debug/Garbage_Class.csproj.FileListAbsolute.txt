@@ -1,0 +1,6 @@
+C:\Users\GnanaVivek_Ponnuru\source\repos\GarbagePrograms\Garbage_Class\obj\Debug\Garbage_Class.csprojAssemblyReference.cache
+C:\Users\GnanaVivek_Ponnuru\source\repos\GarbagePrograms\Garbage_Class\bin\Debug\Garbage_Class.exe.config
+C:\Users\GnanaVivek_Ponnuru\source\repos\GarbagePrograms\Garbage_Class\bin\Debug\Garbage_Class.exe
+C:\Users\GnanaVivek_Ponnuru\source\repos\GarbagePrograms\Garbage_Class\bin\Debug\Garbage_Class.pdb
+C:\Users\GnanaVivek_Ponnuru\source\repos\GarbagePrograms\Garbage_Class\obj\Debug\Garbage_Class.exe
+C:\Users\GnanaVivek_Ponnuru\source\repos\GarbagePrograms\Garbage_Class\obj\Debug\Garbage_Class.pdb
