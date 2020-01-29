@@ -155,8 +155,30 @@ namespace CustomList.Library
                 }
             }
         }
-
+        public bool search(int data){
+            Node a=start;
+            while(a!=last){
+                if(a.data==data){
+                    return true;
+                }
+                a=a.next;
+            }
+            if(last.data==data){
+                return true;
+            }
+            return false;
+        }
+     public void display(){
+         Node a=first;
+         Node b=last;
+         while(a!=b){
+             Console.WriteLine(a.data);
+             a=a.next;
+         }
+     }
+     public int size(){
+         return size;
+     }
         
     }
 }
-
