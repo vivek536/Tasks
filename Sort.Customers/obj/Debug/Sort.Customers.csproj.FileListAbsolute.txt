@@ -1,0 +1,6 @@
+C:\Users\GnanaVivek_Ponnuru\source\repos\Sorting Objects\Sort.Customers\bin\Debug\Sort.Customers.exe.config
+C:\Users\GnanaVivek_Ponnuru\source\repos\Sorting Objects\Sort.Customers\bin\Debug\Sort.Customers.exe
+C:\Users\GnanaVivek_Ponnuru\source\repos\Sorting Objects\Sort.Customers\bin\Debug\Sort.Customers.pdb
+C:\Users\GnanaVivek_Ponnuru\source\repos\Sorting Objects\Sort.Customers\obj\Debug\Sort.Customers.csprojAssemblyReference.cache
+C:\Users\GnanaVivek_Ponnuru\source\repos\Sorting Objects\Sort.Customers\obj\Debug\Sort.Customers.exe
+C:\Users\GnanaVivek_Ponnuru\source\repos\Sorting Objects\Sort.Customers\obj\Debug\Sort.Customers.pdb
