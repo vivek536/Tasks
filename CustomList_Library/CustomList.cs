@@ -1,18 +1,22 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 namespace CustomList_Library
 {
-    class CustomList
+   public  class CustomList
     {
         int size = 0;
         Node start;
         Node last;
 
 
-
+        /// <summary>
+        /// Inserts a node at the end
+        /// </summary>
+        /// <param name="data"></param>
 
         public void add(int data)
         {
@@ -38,6 +42,11 @@ namespace CustomList_Library
            
 
         }
+        /// <summary>
+        /// Value at that index 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public int get(int index)
         {
             Node search = start;
@@ -62,6 +71,11 @@ namespace CustomList_Library
             return search.data;
 
         }
+        /// <summary>
+        /// Inserts value at that index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="data"></param>
         public void add(int index, int data)
         {
             int count = 0;
@@ -109,6 +123,9 @@ namespace CustomList_Library
 
 
         }
+        /// <summary>
+        /// Sorts the list in increasing order.
+        /// </summary>
         public void sort()
         {
             int[] arr = new int[size];
@@ -133,6 +150,10 @@ namespace CustomList_Library
             
 
         }
+        /// <summary>
+        /// Removes the node from the list
+        /// </summary>
+        /// <param name="data"></param>
         public void remove(int data)
         {
             Node temp = start;
@@ -167,6 +188,9 @@ namespace CustomList_Library
                 }
             }
         }
+        /// <summary>
+        /// Prints the nodes in that list
+        /// </summary>
         public void display()
         {
             Node a = start;
@@ -178,10 +202,19 @@ namespace CustomList_Library
                 a = a.next;
             }
         }
+        /// <summary>
+        /// Size of the list
+        /// </summary>
+        /// <returns></returns>
         public int count()
         {
             return size;
         }
+        /// <summary>
+        /// Finds whether value is present or not
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public bool search(int data)
         {
             Node a = start;
@@ -202,6 +235,56 @@ namespace CustomList_Library
         }
 
 
+    }
+    /// <summary>
+    /// It implements IEnumerator for CustomList class
+    /// </summary>
+    public class CustomListEnum : IEnumerator
+    {
+        public CustomList[] _people;
+
+        // Enumerators are positioned before the first element
+        // until the first MoveNext() call.
+        int position = -1;
+
+        public CustomListEnum(CustomList[] list)
+        {
+            _people = list;
+        }
+
+        public bool MoveNext()
+        {
+            position++;
+            return (position < _people.Length);
+        }
+
+        public void Reset()
+        {
+            position = -1;
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
+
+        public CustomList Current
+        {
+            get
+            {
+                try
+                {
+                    return _people[position];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    throw new InvalidOperationException();
+                }
+            }
+        }
     }
 }
 

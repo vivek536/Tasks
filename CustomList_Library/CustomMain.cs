@@ -8,6 +8,10 @@ namespace CustomList_Library
 {
     class CustomMain
     {
+        /// <summary>
+        /// It implements custom list class
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             CustomList cl = new CustomList();
