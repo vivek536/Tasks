@@ -1,0 +1,6 @@
+C:\Users\GnanaVivek_Ponnuru\source\repos\CustomException\ExceptionCheck\bin\Debug\ExceptionCheck.exe.config
+C:\Users\GnanaVivek_Ponnuru\source\repos\CustomException\ExceptionCheck\bin\Debug\ExceptionCheck.exe
+C:\Users\GnanaVivek_Ponnuru\source\repos\CustomException\ExceptionCheck\bin\Debug\ExceptionCheck.pdb
+C:\Users\GnanaVivek_Ponnuru\source\repos\CustomException\ExceptionCheck\obj\Debug\ExceptionCheck.csprojAssemblyReference.cache
+C:\Users\GnanaVivek_Ponnuru\source\repos\CustomException\ExceptionCheck\obj\Debug\ExceptionCheck.exe
+C:\Users\GnanaVivek_Ponnuru\source\repos\CustomException\ExceptionCheck\obj\Debug\ExceptionCheck.pdb
