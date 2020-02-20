@@ -1,0 +1,11 @@
+﻿
+@model MVCDemo.TokenField.Models.test
+
+@using MVCDemo.TokenField.BLL
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.TextBoxTokenField(new List<string>() { "ASP.NET MVC","Entity" });
+
