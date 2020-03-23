@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Controller_Reflection_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_Controller">
+          <Key>
+            <PropertyRef Name="ControllerId" />
+          </Key>
+          <Property Name="ControllerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControllerUrl" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_ControllerMappedRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ControllerId" Type="int" />
+          <Property Name="roleId" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_UserMappedRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="roleId" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Passwod" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__tb_Contro__Contr__47DBAE45">
+          <End Role="tb_Controller" Type="Self.tb_Controller" Multiplicity="0..1" />
+          <End Role="tb_ControllerMappedRoles" Type="Self.tb_ControllerMappedRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Controller">
+              <PropertyRef Name="ControllerId" />
+            </Principal>
+            <Dependent Role="tb_ControllerMappedRoles">
+              <PropertyRef Name="ControllerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Contro__roleI__48CFD27E">
+          <End Role="tb_Roles" Type="Self.tb_Roles" Multiplicity="0..1" />
+          <End Role="tb_ControllerMappedRoles" Type="Self.tb_ControllerMappedRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tb_ControllerMappedRoles">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_UserMa__roleI__44FF419A">
+          <End Role="tb_Roles" Type="Self.tb_Roles" Multiplicity="0..1" />
+          <End Role="tb_UserMappedRoles" Type="Self.tb_UserMappedRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tb_UserMappedRoles">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_UserMa__userI__440B1D61">
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="0..1" />
+          <End Role="tb_UserMappedRoles" Type="Self.tb_UserMappedRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tb_UserMappedRoles">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Controller_Reflection_DBModelStoreContainer">
+          <EntitySet Name="tb_Controller" EntityType="Self.tb_Controller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ControllerMappedRoles" EntityType="Self.tb_ControllerMappedRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Roles" EntityType="Self.tb_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_UserMappedRoles" EntityType="Self.tb_UserMappedRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Users" EntityType="Self.tb_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_Contro__Contr__47DBAE45" Association="Self.FK__tb_Contro__Contr__47DBAE45">
+            <End Role="tb_Controller" EntitySet="tb_Controller" />
+            <End Role="tb_ControllerMappedRoles" EntitySet="tb_ControllerMappedRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Contro__roleI__48CFD27E" Association="Self.FK__tb_Contro__roleI__48CFD27E">
+            <End Role="tb_Roles" EntitySet="tb_Roles" />
+            <End Role="tb_ControllerMappedRoles" EntitySet="tb_ControllerMappedRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_UserMa__roleI__44FF419A" Association="Self.FK__tb_UserMa__roleI__44FF419A">
+            <End Role="tb_Roles" EntitySet="tb_Roles" />
+            <End Role="tb_UserMappedRoles" EntitySet="tb_UserMappedRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_UserMa__userI__440B1D61" Association="Self.FK__tb_UserMa__userI__440B1D61">
+            <End Role="tb_Users" EntitySet="tb_Users" />
+            <End Role="tb_UserMappedRoles" EntitySet="tb_UserMappedRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Controller_Reflection_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_Controller">
+          <Key>
+            <PropertyRef Name="ControllerId" />
+          </Key>
+          <Property Name="ControllerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControllerUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tb_ControllerMappedRoles" Relationship="Self.FK__tb_Contro__Contr__47DBAE45" FromRole="tb_Controller" ToRole="tb_ControllerMappedRoles" />
+        </EntityType>
+        <EntityType Name="tb_ControllerMappedRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ControllerId" Type="Int32" />
+          <Property Name="roleId" Type="Int32" />
+          <NavigationProperty Name="tb_Controller" Relationship="Self.FK__tb_Contro__Contr__47DBAE45" FromRole="tb_ControllerMappedRoles" ToRole="tb_Controller" />
+          <NavigationProperty Name="tb_Roles" Relationship="Self.FK__tb_Contro__roleI__48CFD27E" FromRole="tb_ControllerMappedRoles" ToRole="tb_Roles" />
+        </EntityType>
+        <EntityType Name="tb_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tb_ControllerMappedRoles" Relationship="Self.FK__tb_Contro__roleI__48CFD27E" FromRole="tb_Roles" ToRole="tb_ControllerMappedRoles" />
+          <NavigationProperty Name="tb_UserMappedRoles" Relationship="Self.FK__tb_UserMa__roleI__44FF419A" FromRole="tb_Roles" ToRole="tb_UserMappedRoles" />
+        </EntityType>
+        <EntityType Name="tb_UserMappedRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="roleId" Type="Int32" />
+          <NavigationProperty Name="tb_Roles" Relationship="Self.FK__tb_UserMa__roleI__44FF419A" FromRole="tb_UserMappedRoles" ToRole="tb_Roles" />
+          <NavigationProperty Name="tb_Users" Relationship="Self.FK__tb_UserMa__userI__440B1D61" FromRole="tb_UserMappedRoles" ToRole="tb_Users" />
+        </EntityType>
+        <EntityType Name="tb_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Passwod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tb_UserMappedRoles" Relationship="Self.FK__tb_UserMa__userI__440B1D61" FromRole="tb_Users" ToRole="tb_UserMappedRoles" />
+        </EntityType>
+        <Association Name="FK__tb_Contro__Contr__47DBAE45">
+          <End Role="tb_Controller" Type="Self.tb_Controller" Multiplicity="0..1" />
+          <End Role="tb_ControllerMappedRoles" Type="Self.tb_ControllerMappedRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Controller">
+              <PropertyRef Name="ControllerId" />
+            </Principal>
+            <Dependent Role="tb_ControllerMappedRoles">
+              <PropertyRef Name="ControllerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_Contro__roleI__48CFD27E">
+          <End Role="tb_Roles" Type="Self.tb_Roles" Multiplicity="0..1" />
+          <End Role="tb_ControllerMappedRoles" Type="Self.tb_ControllerMappedRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tb_ControllerMappedRoles">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_UserMa__roleI__44FF419A">
+          <End Role="tb_Roles" Type="Self.tb_Roles" Multiplicity="0..1" />
+          <End Role="tb_UserMappedRoles" Type="Self.tb_UserMappedRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="tb_UserMappedRoles">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_UserMa__userI__440B1D61">
+          <End Role="tb_Users" Type="Self.tb_Users" Multiplicity="0..1" />
+          <End Role="tb_UserMappedRoles" Type="Self.tb_UserMappedRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tb_UserMappedRoles">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Controller_Reflection_DBEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_Controller" EntityType="Self.tb_Controller" />
+          <EntitySet Name="tb_ControllerMappedRoles" EntityType="Self.tb_ControllerMappedRoles" />
+          <EntitySet Name="tb_Roles" EntityType="Self.tb_Roles" />
+          <EntitySet Name="tb_UserMappedRoles" EntityType="Self.tb_UserMappedRoles" />
+          <EntitySet Name="tb_Users" EntityType="Self.tb_Users" />
+          <AssociationSet Name="FK__tb_Contro__Contr__47DBAE45" Association="Self.FK__tb_Contro__Contr__47DBAE45">
+            <End Role="tb_Controller" EntitySet="tb_Controller" />
+            <End Role="tb_ControllerMappedRoles" EntitySet="tb_ControllerMappedRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_Contro__roleI__48CFD27E" Association="Self.FK__tb_Contro__roleI__48CFD27E">
+            <End Role="tb_Roles" EntitySet="tb_Roles" />
+            <End Role="tb_ControllerMappedRoles" EntitySet="tb_ControllerMappedRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_UserMa__roleI__44FF419A" Association="Self.FK__tb_UserMa__roleI__44FF419A">
+            <End Role="tb_Roles" EntitySet="tb_Roles" />
+            <End Role="tb_UserMappedRoles" EntitySet="tb_UserMappedRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_UserMa__userI__440B1D61" Association="Self.FK__tb_UserMa__userI__440B1D61">
+            <End Role="tb_Users" EntitySet="tb_Users" />
+            <End Role="tb_UserMappedRoles" EntitySet="tb_UserMappedRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Controller_Reflection_DBModelStoreContainer" CdmEntityContainer="Controller_Reflection_DBEntities3">
+          <EntitySetMapping Name="tb_Controller">
+            <EntityTypeMapping TypeName="Controller_Reflection_DBModel.tb_Controller">
+              <MappingFragment StoreEntitySet="tb_Controller">
+                <ScalarProperty Name="ControllerId" ColumnName="ControllerId" />
+                <ScalarProperty Name="ControllerUrl" ColumnName="ControllerUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ControllerMappedRoles">
+            <EntityTypeMapping TypeName="Controller_Reflection_DBModel.tb_ControllerMappedRoles">
+              <MappingFragment StoreEntitySet="tb_ControllerMappedRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ControllerId" ColumnName="ControllerId" />
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Roles">
+            <EntityTypeMapping TypeName="Controller_Reflection_DBModel.tb_Roles">
+              <MappingFragment StoreEntitySet="tb_Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_UserMappedRoles">
+            <EntityTypeMapping TypeName="Controller_Reflection_DBModel.tb_UserMappedRoles">
+              <MappingFragment StoreEntitySet="tb_UserMappedRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Users">
+            <EntityTypeMapping TypeName="Controller_Reflection_DBModel.tb_Users">
+              <MappingFragment StoreEntitySet="tb_Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Passwod" ColumnName="Passwod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

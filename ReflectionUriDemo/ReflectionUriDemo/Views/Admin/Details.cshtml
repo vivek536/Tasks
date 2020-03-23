@@ -1,0 +1,35 @@
+﻿@model ReflectionUriDemo.CustomModel.UserControllers
+
+@{
+    ViewBag.Title = "Details";
+}
+@{ 
+    var data = (ReflectionUriDemo.CustomModel.UserControllers)ViewData["userController"];
+}
+<h2>Details</h2>
+
+<div>
+    <h4>UserControllers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @data.UserName
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Controllers)
+        </dt>
+        @foreach(string controller in data.Controllers)
+        {
+        <dd>
+            @controller
+        </dd>
+        }
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Controller_Reflection_DBModelStoreContainer" CdmEntityContainer="Controller_Reflection_DBEntities">
+    <EntitySetMapping Name="tb_Controller">
+      <EntityTypeMapping TypeName="Controller_Reflection_DBModel.tb_Controller">
+        <MappingFragment StoreEntitySet="tb_Controller">
+          <ScalarProperty Name="ControllerId" ColumnName="ControllerId" />
+          <ScalarProperty Name="ControllerUrl" ColumnName="ControllerUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Roles">
+      <EntityTypeMapping TypeName="Controller_Reflection_DBModel.tb_Roles">
+        <MappingFragment StoreEntitySet="tb_Roles">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Users">
+      <EntityTypeMapping TypeName="Controller_Reflection_DBModel.tb_Users">
+        <MappingFragment StoreEntitySet="tb_Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Passwod" ColumnName="Passwod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
