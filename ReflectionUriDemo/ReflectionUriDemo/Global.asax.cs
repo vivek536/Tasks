@@ -16,6 +16,8 @@ namespace ReflectionUriDemo
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            UrlReflection urlReflection = new UrlReflection();
+            urlReflection.AddRouteUri();
         }
     }
 }

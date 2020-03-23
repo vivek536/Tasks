@@ -132,6 +132,8 @@
     <Compile Include="Controllers\BAController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HrController.cs" />
+    <Compile Include="Controllers\NAController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="CustomModel\UserControllers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,6 +168,7 @@
     <Compile Include="Models\tb_Users.cs">
       <DependentUpon>ReflectionUri.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserAuthenticationFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UrlReflection.cs" />
   </ItemGroup>
@@ -225,11 +228,19 @@
     <Content Include="Views\Admin\AddRole.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\AccessDenied.cshtml" />
+    <Content Include="Views\Hr\Index.cshtml" />
+    <Content Include="Views\BA\Index.cshtml" />
+    <Content Include="Views\NA\Index.cshtml" />
+    <Content Include="Views\NA\Details.cshtml" />
+    <Content Include="Views\Hr\Details.cshtml" />
+    <Content Include="Views\BA\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BA\" />
-    <Folder Include="Views\Hr\" />
     <Folder Include="Views\Organizer\" />
   </ItemGroup>
   <ItemGroup>

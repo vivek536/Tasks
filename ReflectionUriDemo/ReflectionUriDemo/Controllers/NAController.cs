@@ -9,14 +9,14 @@ using System.Web.Mvc;
 namespace ReflectionUriDemo.Controllers
 {
     [UserAuthenticationFilter]
-    public class HrController : Controller
+    public class NAController : Controller
     {
         static Controller_Reflection_DBEntities3 databaseEntitties = new Controller_Reflection_DBEntities3();
         // GET: NA
         public ActionResult Index()
         {
-            var sessionOfUser = (tb_Users)Session["User"];
-            return View(databaseEntitties.tb_Users.Where(user => user.UserId == sessionOfUser.UserId).ToList());
+            var sessionOfUser =(tb_Users) Session["User"];
+            return View(databaseEntitties.tb_Users.Where(user=>user.UserId==sessionOfUser.UserId).ToList());
         }
 
         // GET: NA/Details/5
@@ -40,13 +40,14 @@ namespace ReflectionUriDemo.Controllers
             ViewData["userController"] = userController;
             return View();
         }
-        // GET: Hr/Create
+
+        // GET: NA/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Hr/Create
+        // POST: NA/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -62,13 +63,13 @@ namespace ReflectionUriDemo.Controllers
             }
         }
 
-        // GET: Hr/Edit/5
+        // GET: NA/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Hr/Edit/5
+        // POST: NA/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -84,13 +85,13 @@ namespace ReflectionUriDemo.Controllers
             }
         }
 
-        // GET: Hr/Delete/5
+        // GET: NA/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Hr/Delete/5
+        // POST: NA/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

@@ -11,7 +11,8 @@ namespace ReflectionUriDemo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tb_Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,12 @@ namespace ReflectionUriDemo.Models
         {
             this.tb_UserMappedRoles = new HashSet<tb_UserMappedRoles>();
         }
-    
         public int UserId { get; set; }
+        [Display(Name="UserName")]
+        [Required]
         public string UserName { get; set; }
+        [Display(Name ="Password")]
+        [Required]
         public string Passwod { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

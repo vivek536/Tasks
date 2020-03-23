@@ -11,6 +11,10 @@ namespace ReflectionUriDemo
 {
     public class UrlReflection
     {
+        /// <summary>
+        /// Gets the names of controller and action methods
+        /// </summary>
+        /// <returns>List</returns>
         public List<String> getControllerNames()
         {
             Assembly asm = Assembly.GetExecutingAssembly();
@@ -31,6 +35,9 @@ namespace ReflectionUriDemo
             }
             return routeList;
         }
+        /// <summary>
+        /// Adds new Routes to Database
+        /// </summary>
         public void AddRouteUri()
         {
             List <String> routeList= getControllerNames();

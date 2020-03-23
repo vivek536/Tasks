@@ -9,8 +9,6 @@ namespace ReflectionUriDemo.Controllers
     {
         public ActionResult Index()
         {
-            UrlReflection urlReflection = new UrlReflection();
-            urlReflection.AddRouteUri();
             return View();
         }
 

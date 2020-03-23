@@ -5,8 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using ReflectionUriDemo.Models;
 using ReflectionUriDemo.CustomModel;
+
 namespace ReflectionUriDemo.Controllers
 {
+    [UserAuthenticationFilter]
     public class AdminController : Controller
     {
        static  Controller_Reflection_DBEntities3 databaseEntitties = new Controller_Reflection_DBEntities3();
@@ -49,8 +51,13 @@ namespace ReflectionUriDemo.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
+                var username = collection["UserName"].ToString();
+                var password = collection["Passwod"].ToString();
+                tb_Users user = new tb_Users();
+                user.UserName = username;
+                user.Passwod = password;
+                databaseEntitties.tb_Users.Add(user);
+                databaseEntitties.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -58,32 +65,12 @@ namespace ReflectionUriDemo.Controllers
                 return View();
             }
         }
-
-        // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
+            var  userRoles = databaseEntitties.tb_UserMappedRoles.Where(user => user.userId == id).Select(user => user.roleId).ToList();
+            var roles= databaseEntitties.tb_Roles.Where(role => (userRoles.Contains(role.RoleID))).ToList();
+            ViewData["roles"] = roles;
             return View();
         }
 
@@ -93,8 +80,13 @@ namespace ReflectionUriDemo.Controllers
         {
             try
             {
+                int roleId = Convert.ToInt32(collection["Roles"]);
+                tb_UserMappedRoles userMappedRoles = new tb_UserMappedRoles();
+                userMappedRoles.userId = id;
+                userMappedRoles.roleId = roleId;
+                databaseEntitties.tb_UserMappedRoles.Remove(userMappedRoles);
+                databaseEntitties.SaveChanges();
                 // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -113,19 +105,26 @@ namespace ReflectionUriDemo.Controllers
         [HttpPost]
         public ActionResult AddRole(int id, FormCollection collection)
         {
-            int roleId = Convert.ToInt32(collection["Roles"]);
-
-            if (roleId != 0)
+            try
             {
+                int roleId = Convert.ToInt32(collection["Roles"]);
+
+                if (roleId != 0)
+                {
                     tb_UserMappedRoles userMappedRoles = new tb_UserMappedRoles();
                     userMappedRoles.roleId = roleId;
                     userMappedRoles.userId = id;
                     databaseEntitties.tb_UserMappedRoles.Add(userMappedRoles);
                     databaseEntitties.SaveChanges();
                     return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("", "Select Role Name");
+                return View();
             }
-            ModelState.AddModelError("", "Select Role Name");
-            return View();
+            catch(Exception e)
+            {
+                return View();
+            }
         }
     }
 }
